@@ -1,3 +1,4 @@
+import Logo from "./Logo";
 import { anosDeHistoria, site, unidades } from "@/data/site";
 
 export default function Rodape() {
@@ -8,9 +9,7 @@ export default function Rodape() {
       <div className="rodape-interno">
         <div>
           <div className="rodape-marca">
-            <span className="rodape-selo" aria-hidden="true">
-              C
-            </span>
+            <Logo tamanho={36} variante="escuro" />
             <span className="rodape-nome">{site.nome}</span>
           </div>
           <p className="rodape-sobre">

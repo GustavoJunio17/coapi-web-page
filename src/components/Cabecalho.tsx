@@ -1,3 +1,4 @@
+import Logo from "./Logo";
 import { navegacao, site } from "@/data/site";
 
 export default function Cabecalho() {
@@ -5,9 +6,7 @@ export default function Cabecalho() {
     <header className="cabecalho">
       <div className="cabecalho-interno">
         <a href="#topo" className="marca" aria-label="COAPI — início">
-          <span className="marca-selo" aria-hidden="true">
-            C
-          </span>
+          <Logo tamanho={38} />
           <span className="marca-textos">
             <span className="marca-nome">{site.nome}</span>
             <span className="marca-sub">{site.subtitulo}</span>

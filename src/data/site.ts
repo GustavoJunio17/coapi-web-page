@@ -22,6 +22,13 @@ export type Imagem = {
 
 export const site = {
   nome: "COAPI",
+  /**
+   * Logo oficial da cooperativa.
+   * Salve o arquivo em `public/imagens/` e coloque o caminho aqui,
+   * ex.: "/imagens/logo.png". Prefira PNG com fundo transparente ou SVG.
+   * Enquanto estiver vazio, aparece o selo redondo com a letra "C".
+   */
+  logo: "",
   nomeCompleto: "Cooperativa Agropecuária de Piumhi Ltda.",
   subtitulo: "Cooperativa Agropecuária",
   descricao:

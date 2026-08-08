@@ -218,6 +218,29 @@ img {
   letter-spacing: 0.02em;
 }
 
+/* Logo oficial (quando `site.logo` está preenchido) */
+.logo {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* No rodapé, fundo branco para a logo destacar sobre o verde escuro. */
+.logo-escuro {
+  background: #fff;
+  padding: 3px;
+}
+
 .marca-textos {
   display: flex;
   flex-direction: column;
@@ -345,8 +368,9 @@ img {
 }
 
 .hero-figura .media {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   width: 100%;
+  max-height: 560px;
   border-radius: 20px;
 }
 
@@ -880,6 +904,12 @@ a.contato-valor:hover {
 }
 
 @media (max-width: 640px) {
+  /* No celular a foto vertical funciona melhor que a quadrada. */
+  .hero-figura .media {
+    aspect-ratio: 4 / 5;
+    max-height: none;
+  }
+
   .hero-cartao {
     left: auto;
     right: 16px;

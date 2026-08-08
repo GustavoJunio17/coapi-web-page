@@ -58,6 +58,13 @@ imagem: {
 }
 ```
 
+### Logo
+
+Salve a logo oficial em `public/imagens/logo.png` e preencha `site.logo` em
+`src/data/site.ts` com `"/imagens/logo.png"`. Ela aparece no cabeçalho e no rodapé.
+Prefira **PNG com fundo transparente** (ou SVG) e pelo menos 200×200 px.
+Enquanto o campo estiver vazio, aparece o selo redondo com a letra "C".
+
 Tamanhos recomendados:
 
 | Imagem | Proporção | Sugestão |
