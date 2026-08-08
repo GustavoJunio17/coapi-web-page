@@ -1,0 +1,3 @@
+# Coloque aqui as artes/fotos do site.
+# Depois preencha o campo `src` correspondente em src/data/site.ts,
+# usando o caminho a partir de /public — por exemplo: "/imagens/loja.jpg".
