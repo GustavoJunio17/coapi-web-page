@@ -91,7 +91,6 @@ export const stats = [
   { value: String(anosDeHistoria), label: "anos de história" },
   { value: String(site.fundacao), label: "ano de fundação" },
   { value: "4", label: "unidades" },
-  { value: "100%", label: "foco no cooperado" },
 ];
 
 export const quemSomos = {
@@ -121,34 +120,23 @@ export const quemSomos = {
   ],
 };
 
+/** Cards de "Produtos e serviços" — sem foto, só texto. */
 export const produtos = [
   {
     title: "Loja agropecuária",
     text: "Linha completa de produtos para a lavoura e o rebanho, com atendimento técnico.",
-    imagem: { src: "", alt: "Interior da loja COAPI", legenda: "foto: interior da loja" } as Imagem,
   },
   {
     title: "Nutrição animal",
     text: "Rações e suplementos minerais produzidos pela própria cooperativa.",
-    imagem: {
-      src: "/imagens/fabrica-interior.jpg",
-      alt: "Sacaria de ração armazenada na fábrica da COAPI",
-      legenda: "foto: sacaria de ração",
-    } as Imagem,
   },
   {
     title: "Produtos veterinários",
     text: "Medicamentos e insumos veterinários das principais marcas do mercado.",
-    imagem: { src: "", alt: "Prateleira de produtos veterinários", legenda: "foto: prateleira veterinária" } as Imagem,
   },
   {
     title: "Armazenagem de milho",
     text: "Silos para armazenamento da safra dos nossos associados.",
-    imagem: {
-      src: "/imagens/silos.jpg",
-      alt: "Silos de armazenamento da COAPI",
-      legenda: "foto: silos",
-    } as Imagem,
   },
 ];
 
@@ -168,8 +156,8 @@ export const unidades = [
     title: "Fábrica de Rações",
     text: "Produção moderna de rações balanceadas, formuladas para o rebanho da região.",
     imagem: {
-      src: "/imagens/fabrica-racoes.jpg",
-      alt: "Fábrica de rações da COAPI, com os silos ao fundo",
+      src: "/imagens/fabrica-interior.jpg",
+      alt: "Interior da fábrica de rações da COAPI, com a sacaria estocada",
       legenda: "foto: fábrica de rações",
     } as Imagem,
   },
@@ -178,9 +166,9 @@ export const unidades = [
     title: "Fábrica de Minerais",
     text: "Suplementação mineral desenvolvida com acompanhamento técnico.",
     imagem: {
-      src: "",
-      alt: "Fábrica de minerais da COAPI",
-      legenda: "foto: fábrica de minerais (horizontal, 1600×900)",
+      src: "/imagens/fabrica-racoes.jpg",
+      alt: "Fábrica de minerais da COAPI, com os silos ao fundo",
+      legenda: "foto: fábrica de minerais",
     } as Imagem,
   },
   {
@@ -194,6 +182,70 @@ export const unidades = [
     } as Imagem,
   },
 ];
+
+/**
+ * Contato de cada unidade, usado no seletor da seção "Venha nos visitar".
+ *
+ * ⚠️ FALTA PREENCHER: só a Loja Veterinária tem dados confirmados (o telefone
+ * e o endereço vieram do anúncio da cooperativa). Complete telefone, e-mail,
+ * endereço e mapa das outras três unidades.
+ *
+ * Campo vazio simplesmente não aparece no site — nada quebra. Se uma unidade
+ * ficar sem nenhum contato próprio, o site mostra o contato principal da
+ * cooperativa no lugar.
+ *
+ * O `mapaEmbed` é a URL do "Compartilhar → Incorporar um mapa" do Google Maps
+ * (apenas o endereço que fica dentro de `src="..."`).
+ */
+export type UnidadeContato = {
+  id: string;
+  nome: string;
+  telefone: string;
+  email: string;
+  endereco: string;
+  mapaEmbed: string;
+};
+
+export const unidadesContato: UnidadeContato[] = [
+  {
+    id: "loja",
+    nome: "Loja Veterinária",
+    telefone: "37 3371-1319",
+    email: "contato@coapi.com.br",
+    endereco: "Rua Nossa Senhora do Livramento, 115 — Centro, Piumhi — MG",
+    mapaEmbed: "",
+  },
+  {
+    id: "silos",
+    nome: "Silos",
+    telefone: "",
+    email: "",
+    endereco: "",
+    mapaEmbed: "",
+  },
+  {
+    id: "racoes",
+    nome: "Fábrica de Rações",
+    telefone: "",
+    email: "",
+    endereco: "",
+    mapaEmbed: "",
+  },
+  {
+    id: "minerais",
+    nome: "Fábrica de Minerais",
+    telefone: "",
+    email: "",
+    endereco: "",
+    mapaEmbed: "",
+  },
+];
+
+/** Transforma "37 3371-1319" em "tel:+553733711319". */
+export function linkTelefone(telefone: string) {
+  const digitos = telefone.replace(/\D/g, "");
+  return `tel:+55${digitos}`;
+}
 
 export const diretoria = {
   descricao:
