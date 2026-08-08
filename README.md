@@ -30,7 +30,9 @@ Lá você altera:
 
 | O que | Onde no arquivo |
 | --- | --- |
-| Telefone, e-mail, endereço, CNPJ, Instagram | `site.contato` e `site` |
+| Contato de cada unidade (seletor) | `unidadesContato` |
+| Telefone, e-mail e endereço principais | `site.contato` |
+| CNPJ, Instagram | `site` |
 | Nomes da diretoria e do conselho fiscal | `diretoria.executiva` / `diretoria.conselho` |
 | Cards de produtos e serviços | `produtos` |
 | As 4 unidades | `unidades` |
@@ -90,16 +92,31 @@ Tamanhos recomendados:
 | --- | --- | --- |
 | Anúncios do carrossel | livre | a partir de 1000px de largura |
 | Quem somos | 5:4 | 1250×1000 |
-| Cards de produtos | 4:3 | 1200×900 |
 | Unidades | 16:9 | 1600×900 |
 | Retratos da diretoria | 1:1 quadrado | 400×400 |
 
 Para os retratos da diretoria, o campo é `foto` (ex.: `foto: "/imagens/presidente.jpg"`).
 
-## Mapa do Google Maps
+## Contato por unidade
 
-Em `src/data/site.ts`, no campo `site.contato.mapaEmbed`, cole a URL do
-**Compartilhar → Incorporar um mapa** do Google Maps (só a URL que fica dentro de `src="..."`).
+A seção "Venha nos visitar" tem um seletor com as quatro unidades — Loja
+Veterinária, Silos, Fábrica de Rações e Fábrica de Minerais. Cada uma tem
+telefone, e-mail, endereço e mapa próprios, na lista `unidadesContato` de
+`src/data/site.ts`.
+
+**Só a Loja Veterinária está preenchida** (telefone e endereço vieram do
+anúncio da cooperativa). Falta completar as outras três.
+
+Regras úteis ao preencher:
+
+- Campo vazio simplesmente não aparece — nada quebra
+- Unidade sem nenhum contato próprio mostra o contato principal da cooperativa
+- O telefone vira link de ligação sozinho, é só escrever no formato `37 3371-1319`
+
+### Mapa do Google Maps
+
+No campo `mapaEmbed` de cada unidade, cole a URL do **Compartilhar → Incorporar
+um mapa** do Google Maps (só o endereço que fica dentro de `src="..."`).
 Enquanto estiver vazio, aparece o placeholder no lugar do mapa.
 
 ## Publicando na Vercel
@@ -118,7 +135,7 @@ src/
 │  ├─ layout.tsx      fontes, metadados e SEO
 │  ├─ page.tsx        monta as seções na ordem
 │  ├─ globals.css     todo o estilo do site
-│  └─ icon.svg        favicon
+│  └─ icon.png        favicon (emblema da logo)
 ├─ components/        uma seção por arquivo
 │  ├─ Cabecalho.tsx   menu fixo do topo
 │  ├─ Hero.tsx        chamada principal
@@ -126,10 +143,11 @@ src/
 │  ├─ Logo.tsx        emblema da cooperativa
 │  ├─ Numeros.tsx     faixa de números
 │  ├─ QuemSomos.tsx   missão, visão, cooperativismo
-│  ├─ Produtos.tsx    cards de produtos e serviços
+│  ├─ Produtos.tsx    cards de produtos e serviços (só texto)
 │  ├─ Unidades.tsx    as 4 unidades
 │  ├─ Diretoria.tsx   diretoria e conselho fiscal
-│  ├─ Contato.tsx     contatos e mapa
+│  ├─ Contato.tsx     seção de contato
+│  ├─ ContatoUnidades.tsx  seletor de unidades, com mapa
 │  ├─ Rodape.tsx      rodapé
 │  └─ Media.tsx       mostra a foto ou o placeholder
 └─ data/

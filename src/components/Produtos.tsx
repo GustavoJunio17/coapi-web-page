@@ -1,4 +1,3 @@
-import Media from "./Media";
 import { produtos } from "@/data/site";
 
 export default function Produtos() {
@@ -17,10 +16,6 @@ export default function Produtos() {
         <div className="produtos-grade">
           {produtos.map((produto) => (
             <article key={produto.title} className="produto">
-              <Media
-                imagem={produto.imagem}
-                sizes="(max-width: 700px) 100vw, 300px"
-              />
               <div className="produto-corpo">
                 <h3>{produto.title}</h3>
                 <p>{produto.text}</p>

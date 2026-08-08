@@ -614,12 +614,8 @@ img {
   transform: translateY(-3px);
 }
 
-.produto .media {
-  aspect-ratio: 4 / 3;
-}
-
 .produto-corpo {
-  padding: 22px 22px 26px;
+  padding: 26px 24px 28px;
 }
 
 .produto-corpo h3 {
@@ -805,13 +801,62 @@ img {
   max-width: var(--largura);
   margin: 0 auto;
   padding: var(--secao) var(--lateral);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: clamp(36px, 5vw, 72px);
 }
 
 .contato .secao-titulo {
   font-size: clamp(28px, 4vw, 40px);
+}
+
+/* ---------- Seletor de unidades ---------- */
+
+.contato-seletor {
+  margin-top: 40px;
+}
+
+.contato-abas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 1px solid var(--borda);
+  padding-bottom: 22px;
+}
+
+.contato-aba {
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #3d453e;
+  background: transparent;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.contato-aba:hover {
+  border-color: var(--verde);
+  color: var(--verde);
+}
+
+.contato-aba.ativa {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+}
+
+.contato-painel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(36px, 5vw, 72px);
+  align-items: start;
+}
+
+.contato-aviso {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--texto-mono);
+  margin: 20px 0 0;
 }
 
 .contato-lista {
