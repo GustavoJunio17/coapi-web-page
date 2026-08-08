@@ -186,16 +186,12 @@ export const unidades = [
 /**
  * Contato de cada unidade, usado no seletor da seção "Venha nos visitar".
  *
- * ⚠️ FALTA PREENCHER: só a Loja Veterinária tem dados confirmados (o telefone
- * e o endereço vieram do anúncio da cooperativa). Complete telefone, e-mail,
- * endereço e mapa das outras três unidades.
+ * O mapa de cada unidade é montado sozinho a partir do `endereco` — não
+ * precisa colar nada do Google Maps.
  *
  * Campo vazio simplesmente não aparece no site — nada quebra. Se uma unidade
  * ficar sem nenhum contato próprio, o site mostra o contato principal da
  * cooperativa no lugar.
- *
- * O `mapaEmbed` é a URL do "Compartilhar → Incorporar um mapa" do Google Maps
- * (apenas o endereço que fica dentro de `src="..."`).
  */
 export type UnidadeContato = {
   id: string;
@@ -203,7 +199,12 @@ export type UnidadeContato = {
   telefone: string;
   email: string;
   endereco: string;
-  mapaEmbed: string;
+  /**
+   * Opcional. O mapa é montado sozinho a partir do `endereco`.
+   * Preencha só se quiser usar uma URL específica do "Compartilhar →
+   * Incorporar um mapa" do Google Maps (o endereço de dentro do `src="..."`).
+   */
+  mapaEmbed?: string;
 };
 
 export const unidadesContato: UnidadeContato[] = [
@@ -213,31 +214,22 @@ export const unidadesContato: UnidadeContato[] = [
     telefone: "37 3371-1319",
     email: "contato@coapi.com.br",
     endereco: "Rua Nossa Senhora do Livramento, 115 — Centro, Piumhi — MG",
-    mapaEmbed: "",
   },
   {
     id: "silos",
     nome: "Silos",
-    telefone: "",
+    telefone: "(37) 3371-2370",
     email: "",
-    endereco: "",
-    mapaEmbed: "",
+    endereco: "Estrada do Aeroporto, s/n — Zona Rural, Piumhi — MG, 37925-000",
   },
   {
-    id: "racoes",
-    nome: "Fábrica de Rações",
+    id: "fabrica",
+    nome: "Fábrica",
+    // ⚠️ FALTA: confirmar se a fábrica fica no mesmo endereço dos silos
+    // (as fotos mostram as duas no mesmo complexo) e qual o telefone dela.
     telefone: "",
     email: "",
     endereco: "",
-    mapaEmbed: "",
-  },
-  {
-    id: "minerais",
-    nome: "Fábrica de Minerais",
-    telefone: "",
-    email: "",
-    endereco: "",
-    mapaEmbed: "",
   },
 ];
 
@@ -245,6 +237,25 @@ export const unidadesContato: UnidadeContato[] = [
 export function linkTelefone(telefone: string) {
   const digitos = telefone.replace(/\D/g, "");
   return `tel:+55${digitos}`;
+}
+
+/**
+ * URL do mapa da unidade.
+ * Usa o `mapaEmbed` quando existe; senão monta a busca do Google Maps a
+ * partir do endereço, que funciona em iframe sem precisar de chave de API.
+ */
+export function linkMapa(unidade: UnidadeContato) {
+  if (unidade.mapaEmbed) return unidade.mapaEmbed;
+  if (!unidade.endereco) return "";
+  const busca = encodeURIComponent(`COAPI ${unidade.endereco}`);
+  return `https://www.google.com/maps?q=${busca}&output=embed`;
+}
+
+/** Link para abrir a unidade no Google Maps, fora do site. */
+export function linkMapaExterno(unidade: UnidadeContato) {
+  if (!unidade.endereco) return "";
+  const busca = encodeURIComponent(`COAPI ${unidade.endereco}`);
+  return `https://www.google.com/maps/search/?api=1&query=${busca}`;
 }
 
 export const diretoria = {

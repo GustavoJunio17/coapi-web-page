@@ -1,7 +1,13 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { linkTelefone, site, unidadesContato } from "@/data/site";
+import {
+  linkMapa,
+  linkMapaExterno,
+  linkTelefone,
+  site,
+  unidadesContato,
+} from "@/data/site";
 
 /**
  * Seletor de unidades da seção de contato: cada aba mostra o telefone,
@@ -22,6 +28,8 @@ export default function ContatoUnidades() {
   const telefone = unidade.telefone || site.contato.telefone;
   const email = unidade.email || site.contato.email;
   const endereco = unidade.endereco || site.contato.endereco;
+  const mapa = linkMapa(unidade);
+  const mapaExterno = linkMapaExterno(unidade);
 
   /** Setas do teclado navegam entre as abas, como manda o padrão de tablist. */
   function aoTeclar(evento: React.KeyboardEvent) {
@@ -107,22 +115,34 @@ export default function ContatoUnidades() {
           )}
         </div>
 
-        <div className="contato-mapa media">
-          {unidade.mapaEmbed ? (
-            <iframe
-              key={unidade.id}
-              src={unidade.mapaEmbed}
-              title={`Mapa da unidade ${unidade.nome}`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
-          ) : (
-            <span className="media-legenda">
-              mapa: embed do Google Maps
-              <br />
-              {unidade.nome.toLowerCase()}
-            </span>
+        <div>
+          <div className="contato-mapa media">
+            {mapa ? (
+              <iframe
+                key={unidade.id}
+                src={mapa}
+                title={`Mapa da unidade ${unidade.nome}`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            ) : (
+              <span className="media-legenda">
+                mapa: falta o endereço
+                <br />
+                {unidade.nome.toLowerCase()}
+              </span>
+            )}
+          </div>
+          {mapaExterno && (
+            <a
+              className="contato-mapa-link"
+              href={mapaExterno}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Abrir no Google Maps →
+            </a>
           )}
         </div>
       </div>
