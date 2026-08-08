@@ -899,6 +899,13 @@ a.contato-valor:hover {
   min-height: 420px;
 }
 
+.contato-mapa-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
 .contato-mapa iframe {
   width: 100%;
   height: 100%;

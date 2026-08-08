@@ -99,13 +99,11 @@ Para os retratos da diretoria, o campo é `foto` (ex.: `foto: "/imagens/presiden
 
 ## Contato por unidade
 
-A seção "Venha nos visitar" tem um seletor com as quatro unidades — Loja
-Veterinária, Silos, Fábrica de Rações e Fábrica de Minerais. Cada uma tem
-telefone, e-mail, endereço e mapa próprios, na lista `unidadesContato` de
-`src/data/site.ts`.
+A seção "Venha nos visitar" tem um seletor com as unidades — Loja Veterinária,
+Silos e Fábrica. Cada uma tem telefone, e-mail, endereço e mapa próprios, na
+lista `unidadesContato` de `src/data/site.ts`.
 
-**Só a Loja Veterinária está preenchida** (telefone e endereço vieram do
-anúncio da cooperativa). Falta completar as outras três.
+**Falta preencher a Fábrica** (telefone, e-mail e endereço).
 
 Regras úteis ao preencher:
 
@@ -115,9 +113,13 @@ Regras úteis ao preencher:
 
 ### Mapa do Google Maps
 
-No campo `mapaEmbed` de cada unidade, cole a URL do **Compartilhar → Incorporar
-um mapa** do Google Maps (só o endereço que fica dentro de `src="..."`).
-Enquanto estiver vazio, aparece o placeholder no lugar do mapa.
+**Não precisa colar nada.** O mapa é montado a partir do `endereco` da unidade,
+sem chave de API. Abaixo dele fica um link "Abrir no Google Maps", útil no
+celular para traçar a rota.
+
+Se algum endereço cair no lugar errado, aí sim vale usar o campo opcional
+`mapaEmbed`: no Google Maps, **Compartilhar → Incorporar um mapa**, e cole só a
+URL que fica dentro de `src="..."`. Quando preenchido, ele tem prioridade.
 
 ## Publicando na Vercel
 
