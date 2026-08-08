@@ -24,11 +24,12 @@ export const site = {
   nome: "COAPI",
   /**
    * Logo oficial da cooperativa.
-   * Salve o arquivo em `public/imagens/` e coloque o caminho aqui,
-   * ex.: "/imagens/logo.png". Prefira PNG com fundo transparente ou SVG.
-   * Enquanto estiver vazio, aparece o selo redondo com a letra "C".
+   * Usamos só o emblema (o círculo), recortado de `logo.png`, porque o
+   * "COAPI" da logo ficaria ilegível nos 38px do cabeçalho — ali ele
+   * aparece como texto de verdade ao lado do selo.
+   * A logo completa continua em `/imagens/logo.png`.
    */
-  logo: "",
+  logo: "/imagens/logo-emblema.png",
   nomeCompleto: "Cooperativa Agropecuária de Piumhi Ltda.",
   subtitulo: "Cooperativa Agropecuária",
   descricao:
@@ -60,13 +61,31 @@ export const hero = {
   selo: `Desde ${site.fundacao} · ${anosDeHistoria} anos`,
   tituloInicio: "Ao lado do produtor rural,",
   tituloDestaque: "geração após geração.",
-  imagem: {
-    src: "",
-    alt: "Produtor rural no campo",
-    legenda: "foto: produtor no campo (vertical, 1200×1500)",
-  } as Imagem,
-  destaque: { valor: "4", label: "unidades" },
 };
+
+/**
+ * Anúncios que giram no carrossel do topo.
+ * Para adicionar um novo, salve a arte em `public/imagens/` e acrescente
+ * um item nesta lista — o carrossel se ajusta sozinho à quantidade.
+ * As artes aparecem inteiras (sem corte), então podem ter proporções diferentes.
+ */
+export const anuncios: Imagem[] = [
+  {
+    src: "/imagens/anuncio-1.png",
+    alt: "Grande variedade de chapéus na COAPI — Panamá, Country, Palha e outros modelos. Ligue 3371-1319 ou visite a Rua Nossa Senhora do Livramento 115, Centro",
+    legenda: "anúncio: chapéus",
+  },
+  {
+    src: "/imagens/anuncio-2.png",
+    alt: "Consultoria no pé da Serra da Canastra, em parceria entre Rações COAPI e Raça da Cidade",
+    legenda: "anúncio: consultoria Serra da Canastra",
+  },
+  {
+    src: "/imagens/anuncio-3.png",
+    alt: "Rações COAPI — potência máxima para seu rebanho",
+    legenda: "anúncio: rações",
+  },
+];
 
 export const stats = [
   { value: String(anosDeHistoria), label: "anos de história" },
@@ -79,8 +98,8 @@ export const quemSomos = {
   titulo: "Uma tradição de qualidade, respeito e responsabilidade.",
   texto: `Fundada há ${anosDeHistoria} anos, a COAPI sempre trabalhou apoiando o produtor rural. Nossa loja está de portas abertas, com uma excelente linha de produtos para sua lavoura e seu rebanho e profissionais treinados para melhor atendê-lo.`,
   imagem: {
-    src: "",
-    alt: "Fachada da loja COAPI",
+    src: "/imagens/loja.png",
+    alt: "Fachada da loja da COAPI, na Rua Nossa Senhora do Livramento, em Piumhi",
     legenda: "foto: fachada da loja COAPI (horizontal, 1250×1000)",
   } as Imagem,
   pilares: [
@@ -111,7 +130,11 @@ export const produtos = [
   {
     title: "Nutrição animal",
     text: "Rações e suplementos minerais produzidos pela própria cooperativa.",
-    imagem: { src: "", alt: "Sacaria de ração", legenda: "foto: sacaria de ração" } as Imagem,
+    imagem: {
+      src: "/imagens/fabrica-interior.jpg",
+      alt: "Sacaria de ração armazenada na fábrica da COAPI",
+      legenda: "foto: sacaria de ração",
+    } as Imagem,
   },
   {
     title: "Produtos veterinários",
@@ -121,7 +144,11 @@ export const produtos = [
   {
     title: "Armazenagem de milho",
     text: "Silos para armazenamento da safra dos nossos associados.",
-    imagem: { src: "", alt: "Silos da COAPI", legenda: "foto: silos" } as Imagem,
+    imagem: {
+      src: "/imagens/silos.jpg",
+      alt: "Silos de armazenamento da COAPI",
+      legenda: "foto: silos",
+    } as Imagem,
   },
 ];
 
@@ -130,25 +157,41 @@ export const unidades = [
     num: "U/01",
     title: "Loja Veterinária",
     text: "Linha completa de medicamentos, insumos veterinários e produtos para a lavoura, com atendimento técnico.",
-    imagem: { src: "", alt: "Loja veterinária da COAPI", legenda: "foto: loja veterinária" } as Imagem,
+    imagem: {
+      src: "/imagens/loja.png",
+      alt: "Fachada da loja veterinária da COAPI",
+      legenda: "foto: loja veterinária",
+    } as Imagem,
   },
   {
     num: "U/02",
     title: "Fábrica de Rações",
     text: "Produção moderna de rações balanceadas, formuladas para o rebanho da região.",
-    imagem: { src: "", alt: "Linha de produção da fábrica de rações", legenda: "foto: linha de produção" } as Imagem,
+    imagem: {
+      src: "/imagens/fabrica-racoes.jpg",
+      alt: "Fábrica de rações da COAPI, com os silos ao fundo",
+      legenda: "foto: fábrica de rações",
+    } as Imagem,
   },
   {
     num: "U/03",
     title: "Fábrica de Minerais",
     text: "Suplementação mineral desenvolvida com acompanhamento técnico.",
-    imagem: { src: "", alt: "Fábrica de minerais", legenda: "foto: fábrica de minerais" } as Imagem,
+    imagem: {
+      src: "",
+      alt: "Fábrica de minerais da COAPI",
+      legenda: "foto: fábrica de minerais (horizontal, 1600×900)",
+    } as Imagem,
   },
   {
     num: "U/04",
     title: "Silos",
     text: "Estrutura de armazenamento de milho à disposição dos cooperados.",
-    imagem: { src: "", alt: "Silos ao entardecer", legenda: "foto: silos ao entardecer" } as Imagem,
+    imagem: {
+      src: "/imagens/silos.jpg",
+      alt: "Silos de armazenamento de milho da COAPI",
+      legenda: "foto: silos",
+    } as Imagem,
   },
 ];
 

@@ -58,18 +58,37 @@ imagem: {
 }
 ```
 
+### Carrossel de anúncios
+
+Os anúncios que giram no topo da página ficam na lista `anuncios`, em
+`src/data/site.ts`. Para trocar ou acrescentar um, salve a arte em
+`public/imagens/` e edite a lista — o carrossel se ajusta sozinho à quantidade
+de itens (com um item só, ele some as setas e os pontos).
+
+As artes aparecem **inteiras, sem corte**, dentro de um quadro quadrado, então
+podem ter proporções diferentes entre si. A troca é automática a cada 6s e pausa
+quando o mouse está em cima ou quando algum botão está com foco do teclado.
+Também dá para navegar com as setas ← → do teclado.
+
+Sempre preencha o `alt` descrevendo o que o anúncio diz — é o que leitores de
+tela anunciam e o que o Google indexa, já que o texto está dentro da imagem.
+
 ### Logo
 
-Salve a logo oficial em `public/imagens/logo.png` e preencha `site.logo` em
-`src/data/site.ts` com `"/imagens/logo.png"`. Ela aparece no cabeçalho e no rodapé.
-Prefira **PNG com fundo transparente** (ou SVG) e pelo menos 200×200 px.
-Enquanto o campo estiver vazio, aparece o selo redondo com a letra "C".
+A logo oficial está em `public/imagens/logo.png`. Como ela traz o emblema e a
+palavra "COAPI" juntos, e esse texto ficaria ilegível nos 38px do cabeçalho,
+o site usa `logo-emblema.png` — só o círculo, recortado da logo original — com
+o "COAPI" ao lado como texto de verdade. O mesmo emblema vira o ícone da aba
+do navegador (`src/app/icon.png`).
+
+Se um dia chegar a versão vetorial (`.svg`), basta trocar o caminho em
+`site.logo`. Vetor escala sem perder qualidade e é o ideal para logo.
 
 Tamanhos recomendados:
 
 | Imagem | Proporção | Sugestão |
 | --- | --- | --- |
-| Foto principal (topo) | 4:5 vertical | 1200×1500 |
+| Anúncios do carrossel | livre | a partir de 1000px de largura |
 | Quem somos | 5:4 | 1250×1000 |
 | Cards de produtos | 4:3 | 1200×900 |
 | Unidades | 16:9 | 1600×900 |
@@ -103,6 +122,8 @@ src/
 ├─ components/        uma seção por arquivo
 │  ├─ Cabecalho.tsx   menu fixo do topo
 │  ├─ Hero.tsx        chamada principal
+│  ├─ Carrossel.tsx   carrossel dos anúncios
+│  ├─ Logo.tsx        emblema da cooperativa
 │  ├─ Numeros.tsx     faixa de números
 │  ├─ QuemSomos.tsx   missão, visão, cooperativismo
 │  ├─ Produtos.tsx    cards de produtos e serviços

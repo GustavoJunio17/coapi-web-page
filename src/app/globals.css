@@ -374,34 +374,92 @@ img {
   border-radius: 20px;
 }
 
-.hero-cartao {
-  position: absolute;
-  left: -36px;
-  bottom: 38px;
-  background: #fff;
+/* ---------- Carrossel de anúncios ---------- */
+
+.carrossel {
+  width: 100%;
+}
+
+.carrossel-quadro {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 560px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--fundo-claro);
   border: 1px solid var(--borda);
-  border-radius: 16px;
-  padding: 20px 24px;
-  box-shadow: 0 18px 44px rgba(15, 42, 30, 0.1);
+}
+
+.carrossel-trilho {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hero-cartao-valor {
-  font-family: var(--fonte-titulo), sans-serif;
-  font-size: 34px;
-  font-weight: 500;
-  color: var(--verde);
+.carrossel-slide {
+  position: relative;
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.carrossel-seta {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--borda);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  color: var(--tinta);
+  font-size: 24px;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0 0 3px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.hero-cartao-label {
-  font-family: var(--fonte-mono), ui-monospace, monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--texto-mono);
+.carrossel-seta:hover {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+}
+
+.carrossel-seta-anterior {
+  left: 12px;
+}
+
+.carrossel-seta-proximo {
+  right: 12px;
+}
+
+.carrossel-pontos {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.carrossel-ponto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: #c6cec6;
+  cursor: pointer;
+  transition: background 0.2s ease, width 0.2s ease;
+}
+
+.carrossel-ponto.ativo {
+  background: var(--verde);
+  width: 22px;
+  border-radius: 999px;
 }
 
 /* ---------- Números ---------- */
@@ -910,11 +968,10 @@ a.contato-valor:hover {
     max-height: none;
   }
 
-  .hero-cartao {
-    left: auto;
-    right: 16px;
-    bottom: 16px;
-    padding: 16px 20px;
+  .carrossel-seta {
+    width: 34px;
+    height: 34px;
+    font-size: 20px;
   }
 
   .numero {
