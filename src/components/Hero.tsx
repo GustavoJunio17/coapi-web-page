@@ -1,5 +1,5 @@
-import Media from "./Media";
-import { hero, site } from "@/data/site";
+import Carrossel from "./Carrossel";
+import { anuncios, hero, site } from "@/data/site";
 
 export default function Hero() {
   return (
@@ -23,15 +23,7 @@ export default function Hero() {
         </div>
       </div>
       <div className="hero-figura">
-        <Media
-          imagem={hero.imagem}
-          priority
-          sizes="(max-width: 900px) 100vw, 560px"
-        />
-        <div className="hero-cartao">
-          <span className="hero-cartao-valor">{hero.destaque.valor}</span>
-          <span className="hero-cartao-label">{hero.destaque.label}</span>
-        </div>
+        <Carrossel itens={anuncios} />
       </div>
     </section>
   );
